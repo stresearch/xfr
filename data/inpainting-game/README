@@ -1,0 +1,7 @@
+This directory contains data (as csv files) and images for 95
+subjects. The csv files are all at top level in the IJBC
+subdirectory. The images are stored in a set of compressed tar files,
+one per subject, also in the IJBC subdirectory.
+To unpack all of the images, run the unpack-aligned.sh script in this
+directory; the resulting directory structure should match the list in
+aligned-files.txt.

@@ -1,0 +1,45 @@
+======================================================================
+== The following notice covers the Systems & Technology Research, LLC.
+== Explainable Face Recognition software delivery.  
+======================================================================
+
+This software is provided to the United States Government (USG) under 
+contract number 2019-19022600003 with Unlimited Rights as defined at 
+Federal Acquisition Regulation 52.227-14, “Rights in Data-General” 
+(May 2014)("Unlimited rights" means the rights of the Government to 
+use, disclose, reproduce, prepare derivative works, distribute copies 
+to the public, and perform publicly and display publicly, in any manner 
+and for any purpose, and to have or permit others to do so”), subject 
+to the copyrights and terms of the third party licenses for third party 
+software components integrated into the Janus system listed below and 
+identified further in the Excel file accompanying this txt file, 
+titled, "docs/janus_str_test-evaluation_dependencies.xlsx".
+ 
+Copyright (C) 2020 Systems & Technology Research, LLC.
+http://www.stresearch.com
+
+======================================================================
+The following notice covers the Light-CNN software:  ./python/xfr/models/lightcnn.py
+ 
+
+> MIT License
+>
+> Copyright (c) 2017 Alfred Xiang Wu
+
+> Permission is hereby granted, free of charge, to any person obtaining a copy
+> of this software and associated documentation files (the "Software"), to deal
+> in the Software without restriction, including without limitation the rights
+> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> copies of the Software, and to permit persons to whom the Software is
+> furnished to do so, subject to the following conditions:
+
+> The above copyright notice and this permission notice shall be included in all
+> copies or substantial portions of the Software.
+
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+> SOFTWARE.
