@@ -4,7 +4,7 @@ Explainable Face Recognition (XFR)
 
 Explainable face recognition is the problem of providing an interpretable reasoning for the outputs of a face recognition system.  This software distribution accompanies the arXiv paper:
 
-[J. Williford, B. May and J. Byrne, "Explainable Face Recognition", 2020 (arXiv link TBD) ](http://arxiv.org)
+J. Williford, B. May and J. Byrne, "Explainable Face Recognition", ECCV 2020 [(arXiv link TBD)](http://arxiv.org)
 
 In this paper, we provide the first comprehensive benchmark for explainable face recognition (XFR), and make the following contributions:
 
@@ -37,7 +37,7 @@ the whitebox demo and some of the black box notebooks.
 
 The whitebox explainable face recognition requires a pytorch convolutional network trained for face matching.  In this distribution, we include support for three systems:
 
-* Resnet-101+L2 normalization.  This is the STR-Janus system.
+* Resnet-101+L2 normalization.  This is an legacy version of the STR-Janus system.
 * Resnet-50-128d.  This is the the University of Oxford trained [VGGFace2](http://www.robots.ox.ac.uk/~vgg/data/vgg_face2) system.
 * Light CNN.  This is a publicly available [Light-CNN](https://github.com/AlfredXiangWu/LightCNN) face matcher based on the max feature maps.
 
@@ -262,6 +262,11 @@ are covered by the IJB-C and [Creative Common licenses](https://creativecommons.
 
 > This product contains or makes use of the following data made available by the Intelligence Advanced Research Projects Activity (IARPA): IARPA Janus Benchmark C (IJB-C) data detailed at [Face Challenges homepage](https://www.nist.gov/programs-projects/face-challenges).
 
+The following notice covers the face detector bundled with this distribution.
+
+The face detector was originally trained by University of Massachusetts, Amherst and converted to PyTorch by the authors.  If you use this software, please consider citing:
+
+H. Jiang and E. Learned-Miller, "Face Detection with the Faster R-CNN" in FG (IEEE Conference on Automatic Face and Gesture Recognition) 2017.
 
 # Acknowledgement
 
