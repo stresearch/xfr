@@ -257,6 +257,11 @@ The following notice covers the Light-CNN software:  ./python/xfr/models/lightcn
 > OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 > SOFTWARE.
 
+The images in the inpainting-game dataset are a subset of the IJB-C dataset and
+are covered by the IJB-C and [Creative Common licenses](https://creativecommons.org/licenses/):
+
+> This product contains or makes use of the following data made available by the Intelligence Advanced Research Projects Activity (IARPA): IARPA Janus Benchmark C (IJB-C) data detailed at [Face Challenges homepage](https://www.nist.gov/programs-projects/face-challenges).
+
 
 # Acknowledgement
 
