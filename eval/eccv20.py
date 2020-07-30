@@ -27,7 +27,11 @@ import xfr.models.whitebox
 import xfr.show
 
 sys.path.append('../demo')
-from test_whitebox import _blend_saliency_map
+try:
+    from test_whitebox import _blend_saliency_map
+except ModuleNotFoundError as e:
+    raise RuntimeError("This script needs to be called from the eval "
+                       "directory.") from e
 
 sys.path.append('../python/strface')  
 import strface.detection
@@ -261,7 +265,7 @@ def f_detection_nocrop(im):
 def figure1():
     """16x16 frontal mates, frontal non-mates, any probe, resnet-101 whitebox"""
 
-    wb = Whitebox(WhiteboxSTResnet(stresnet101('../models/resnet101_l2_d512_twocrop.pth')))
+    wb = Whitebox(WhiteboxSTResnet(stresnet101('../models/resnet101v4_28NOV17_train.pth')))
     if not os.path.exists('_vggface2_topk_frontal_nonmates.pkl'):
         _vggface2_topk_frontal_nonmates(wb, topk=32)  # recompute once
     n_subjects = 16
@@ -318,7 +322,7 @@ def figure1():
 def figure2():
     """One mate, top-k nonmates, row-wise by approach"""
     n_subjects = 10
-    wb = Whitebox(WhiteboxSTResnet(stresnet101('../models/resnet101_l2_d512_twocrop.pth')))
+    wb = Whitebox(WhiteboxSTResnet(stresnet101('../models/resnet101v4_28NOV17_train.pth')))
     if not os.path.exists('_vggface2_topk_nonmates.pkl'):
         _vggface2_topk_nonmates(wb, topk=32)  # recompute once
     (matelist, nonmatelist, probelist) = _triplet_mate_frontalpose_nonmate_topk_probe_frontalpose()
