@@ -1,6 +1,7 @@
-# Project
-Explainable Face Recognition (XFR)  
-[https://stresearch.github.io/xfr](https://stresearch.github.io/xfr)
+# Explainable Face Recognition (XFR) Project
+
+* Project website: [https://stresearch.github.io/xfr](https://stresearch.github.io/xfr)
+* Code and dataset repository: [https://github.com/stresearch/xfr](https://github.com/stresearch/xfr)
 
 Explainable face recognition is the problem of providing an interpretable reasoning for the outputs of a face recognition system.  This software distribution accompanies the arXiv paper:
 
