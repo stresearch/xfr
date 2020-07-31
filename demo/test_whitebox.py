@@ -78,14 +78,14 @@ def ebp():
 
     # Create whitebox object with STR-Janus resnet-101 convolutional network
     wb = Whitebox(WhiteboxSTResnet(stresnet101('../models/resnet101v4_28NOV17_train.pth')))
-    x_probe = wb.net.preprocess(PIL.Image.open('../data/jebyrne.jpg'))
+    x_probe = wb.net.preprocess(PIL.Image.open('../data/demo_face.jpg'))
 
     # Generate Excitation backprop (EBP) saliency map at first convolutional layer
     P = torch.zeros( (1, wb.net.num_classes()) );  P[0][0] = 1.0;  # one-hot prior probability
     img_saliency = wb.ebp(x_probe, P)
 
     # Overlay saliency map with display image
-    img_display = PIL.Image.open('../data/jebyrne.jpg').resize( (112,112) )
+    img_display = PIL.Image.open('../data/demo_face.jpg').resize( (112,112) )
     outfile = 'test_whitebox_ebp.jpg';
     _blend_saliency_map(img_display, img_saliency).save(outfile)
     print('[test_whitebox.ebp]: saving saliency map blended overlay to "./%s"' % outfile)
@@ -93,19 +93,19 @@ def ebp():
 def contrastive_ebp():
     """Contrastive excitation backprop"""
     wb = Whitebox(WhiteboxSTResnet(stresnet101('../models/resnet101v4_28NOV17_train.pth')))
-    x_probe = wb.net.preprocess(PIL.Image.open('../data/jebyrne.jpg'))
+    x_probe = wb.net.preprocess(PIL.Image.open('../data/demo_face.jpg'))
     img_saliency = wb.contrastive_ebp(x_probe, k_poschannel=0, k_negchannel=100)
     outfile = './test_whitebox_contrastive_ebp.jpg';
-    _blend_saliency_map(PIL.Image.open('../data/jebyrne.jpg').resize( img_saliency.shape ), img_saliency).save(outfile)
+    _blend_saliency_map(PIL.Image.open('../data/demo_face.jpg').resize( img_saliency.shape ), img_saliency).save(outfile)
     print('[test_whitebox.contrastive_ebp]: saving saliency map blended overlay to "%s"' % outfile)
 
 def truncated_contrastive_ebp():
     """Truncated contrastive excitation backprop"""
     wb = Whitebox(WhiteboxSTResnet(stresnet101('../models/resnet101v4_28NOV17_train.pth')))
-    x_probe = wb.net.preprocess(PIL.Image.open('../data/jebyrne.jpg'))
+    x_probe = wb.net.preprocess(PIL.Image.open('../data/demo_face.jpg'))
     img_saliency = wb.truncated_contrastive_ebp(x_probe, k_poschannel=0, k_negchannel=100, percentile=20)
     outfile = './test_whitebox_truncated_contrastive_ebp.jpg';
-    _blend_saliency_map(PIL.Image.open('../data/jebyrne.jpg').resize(img_saliency.shape), img_saliency).save(outfile)
+    _blend_saliency_map(PIL.Image.open('../data/demo_face.jpg').resize(img_saliency.shape), img_saliency).save(outfile)
     print('[test_whitebox.truncated_contrastive_ebp]: saving saliency map blended overlay overlay to "%s"' % outfile)
 
 def triplet_ebp():
@@ -146,7 +146,7 @@ def layerwise_ebp():
     """EBP alpha transparency montage starting from each interior layer and selected node specified by argmax excitation at this layer"""
 
     wb = Whitebox(WhiteboxSTResnet(stresnet101('../models/resnet101v4_28NOV17_train.pth')), ebp_version=5, ebp_subtree_mode='all')
-    im_probe = PIL.Image.open('../data/jebyrne.jpg')
+    im_probe = PIL.Image.open('../data/demo_face.jpg')
     img_display = np.array(im_probe.resize( (112,112) ))
     x_probe = wb.net.preprocess(im_probe)
 
@@ -206,11 +206,11 @@ def ebp_lightcnn():
     statedict = xfr.models.lightcnn.Load_Checkpoint('../models/LightCNN_29Layers_V2_checkpoint.pth.tar')
     net.load_state_dict(statedict)
     wb = xfr.models.whitebox.Whitebox(xfr.models.whitebox.WhiteboxLightCNN(net), ebp_subtree_mode='affineonly')
-    x_probe = wb.net.preprocess(PIL.Image.open('../data/jebyrne.jpg'))
+    x_probe = wb.net.preprocess(PIL.Image.open('../data/demo_face.jpg'))
     P = torch.zeros( (1, wb.net.num_classes()) );  P[0][0] = 1.0;  # one-hot prior probability
     img_saliency = wb.ebp(x_probe, P, mwp=False)
 
-    img_display = PIL.Image.open('../data/jebyrne.jpg').resize( (128,128) )
+    img_display = PIL.Image.open('../data/demo_face.jpg').resize( (128,128) )
     outfile = './test_whitebox_ebp_lightcnn.jpg';
     _blend_saliency_map(img_display, img_saliency).save(outfile)
     print('[test_whitebox.ebp_lightcnn]: saving saliency map blended overlay to "%s"' % outfile)
@@ -225,10 +225,10 @@ def ebp_senet50_256():
     net = senet50_256.senet50_256('../models/senet50_256_pytorch/senet50_256.pth')
     wb = xfr.models.whitebox.Whitebox(xfr.models.whitebox.Whitebox_senet50_256(net))
 
-    x_probe = wb.net.preprocess(PIL.Image.open('../data/jebyrne.jpg'))
+    x_probe = wb.net.preprocess(PIL.Image.open('../data/demo_face.jpg'))
     P = torch.zeros( (1, wb.net.num_classes()) );  P[0][0] = 1.0;  # one-hot prior probability
     img_saliency = wb.ebp(x_probe, P, mwp=False)
-    img_display = PIL.Image.open('../data/jebyrne.jpg').resize( (112,112) )
+    img_display = PIL.Image.open('../data/demo_face.jpg').resize( (112,112) )
     outfile = './test_whitebox_ebp_senet50_256.jpg';
     _blend_saliency_map(img_display, img_saliency).save(outfile)
     print('[test_whitebox.ebp_senet50_256]: saving saliency map blended overlay to "%s"' % outfile)
@@ -242,10 +242,10 @@ def ebp_resnet50_128():
     net = resnet50_128.resnet50_128('../models/resnet50_128_pytorch/resnet50_128.pth')
     wb = xfr.models.whitebox.Whitebox(xfr.models.whitebox.Whitebox_resnet50_128(net))
 
-    x_probe = wb.net.preprocess(PIL.Image.open('../data/jebyrne.jpg'))
+    x_probe = wb.net.preprocess(PIL.Image.open('../data/demo_face.jpg'))
     P = torch.zeros( (1, wb.net.num_classes()) );  P[0][0] = 1.0;  # one-hot prior probability
     img_saliency = wb.ebp(x_probe, P, mwp=False)
-    img_display = PIL.Image.open('../data/jebyrne.jpg').resize( (112,112) )
+    img_display = PIL.Image.open('../data/demo_face.jpg').resize( (112,112) )
     outfile = './test_whitebox_ebp_resnet50_128.jpg';
     _blend_saliency_map(img_display, img_saliency).save(outfile)
     print('[test_whitebox.ebp_resnet50_128]: saving saliency map blended overlay to "%s"' % outfile)
