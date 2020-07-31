@@ -18,7 +18,7 @@ In this paper, we provide the first comprehensive benchmark for explainable face
 Tested with Python 3.6, PyTorch 1.3.   We recommend installation in a python-3.6 virtual environment.
 
 ```python
-pip install scipy numpy pillow torch torchvision scikit-image pandas dill vipy opencv-python jupyter easydict
+pip3 install torch scikit-image scipy numpy pillow torchvision pandas dill vipy opencv-python jupyter easydict 
 ```
 
 Add the python directory to your PYTHONPATH
