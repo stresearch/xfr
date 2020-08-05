@@ -5,7 +5,7 @@
 
 Explainable face recognition is the problem of providing an interpretable reasoning for the outputs of a face recognition system.  This software distribution accompanies the arXiv paper:
 
-J. Williford, B. May and J. Byrne, "Explainable Face Recognition", ECCV 2020 [https://arxiv.org/pdf/2008.00916.pdf](arXiv:2008.00916)
+J. Williford, B. May and J. Byrne, "Explainable Face Recognition", ECCV 2020 [arXiv:2008.00916](https://arxiv.org/pdf/2008.00916.pdf)
 
 In this paper, we provide the first comprehensive benchmark for explainable face recognition (XFR), and make the following contributions:
 
