@@ -14,6 +14,12 @@ In this paper, we provide the first comprehensive benchmark for explainable face
 * Inpainting game protocol.  We define a standardized evaluation protocol for fine grained discriminative visualization of faces.
 * Inpainting game dataset for facial recognition.  We publicly release the inpainting game dataset, algorithms and baseline results to support reproducible research.
 
+Short Intro Video (1 min)
+=========================
+
+
+{% include youtubePlayer.html id="lzJrC8xcuhs" %}
+
 Presentation (10 min)
 =====================
 
