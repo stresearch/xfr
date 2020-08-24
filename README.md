@@ -32,7 +32,7 @@ There are apparently cases where PyTorch will generate code for the wrong GPU, w
 to "CUDA error: no kernel image is available for execution on the device" errors in both
 the whitebox demo and some of the black box notebooks.
 
-Some of the binary files in this repository, such as the networks and the Inpainting Game dataset, is provided by (git-lfs)[https://git-lfs.github.com/]. To reproduce the results, you will need to install git-lfs and then run `git lfs install` in your user account.
+Some of the binary files in this repository, such as the networks and the Inpainting Game dataset, is provided by [git-lfs](https://git-lfs.github.com/). To reproduce the results, you will need to [install git-lfs](https://git-lfs.github.com/) and then run `git lfs install` in your user account.
 
 # Whitebox Explainable Face Recognition 
 
