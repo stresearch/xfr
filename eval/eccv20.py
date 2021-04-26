@@ -207,7 +207,7 @@ def _triplet_montage(wb, matelist, nonmatelist, probelist, outfile, f_saliency=N
     for (im_mate, im_matedprobes) in zip(matelist, probelist):
         imlist.append(im_mate)
         imlist = imlist + im_matedprobes
-    img_montage = vipy.visualize.montage(imlist, 112, 112, rows=len(matelist)+1, cols=len(nonmatelist)+1, grayscale=False, skip=False, border=1, crop=False)
+    img_montage = vipy.visualize.montage(imlist, 112, 112, gridrows=len(matelist)+1, gridcols=len(nonmatelist)+1, skip=False, border=1, crop=False)
     return vipy.util.imwrite(img_montage, outfile)
 
 
