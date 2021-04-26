@@ -191,7 +191,7 @@ def weighted_subtree_triplet_ebp(topk=1, mask='nose'):
         imlist.append(vipy.image.ImageDetection(filename=outfile, xmin=0, ymin=0, width=112, height=112).rgb())
 
     f_montage = './test_whitebox_weighted_subtree_ebp_topk_%d_mask_%s.jpg' % (topk, mask)
-    img_montage = vipy.visualize.montage(imlist, 112, 112, grayscale=False, skip=False, border=1)
+    img_montage = vipy.visualize.montage(imlist, imgheight=112, imgwidth=112, skip=False, border=1)
     vipy.util.imwrite(img_montage, f_montage)
     print('[test_whitebox.weighted_subtree_triplet_ebp]: Saving montage (rowwise subtree, sorted by increasing gradient weight) to "%s"' % f_montage)
     print('[test_whitebox.weighted_subtree_triplet_ebp]: Final image in montage (bottom right) is weighted subtree saliency map')
