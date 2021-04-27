@@ -1,3 +1,4 @@
+
 import sys
 import os.path
 import torch
@@ -162,8 +163,8 @@ def layerwise_ebp():
         imlist.append(vipy.image.ImageDetection(filename=outfile, xmin=0, ymin=0, width=112, height=112).rgb())
 
     f_montage = './test_whitebox_layerwise_ebp.jpg'
-    img_montage = vipy.visualize.montage(imlist, 112, 112, grayscale=False, skip=False, border=1)
-    vipy.util.imwrite(img_montage, f_montage)
+    im_montage = vipy.visualize.montage(imlist, 112, 112, grayscale=False, skip=False, border=1)
+    vipy.util.imwrite(im_montage.numpy(), f_montage)
     print('[test_whitebox.layerwise_ebp]: Saving montage (rowwise by layers, approaching the image layer in bottom right) to "%s"' % f_montage)
 
 
@@ -182,17 +183,17 @@ def weighted_subtree_triplet_ebp(topk=1, mask='nose'):
     print('[test_whitebox.weighted_subtree_triplet_ebp]: weighted subtree EBP, selected layers=%s, P=%s' % (str(k_subtree), str(P_subtree)))
 
     imlist = []
-    P_subtree = P_subtree.tolist()
-    P_subtree.append(1.0)
+    P_subtree.append(1.0)  # this contains the scale factors 
     P_img.append(img_subtree)
-    for (p, img_saliency) in zip(P_subtree, P_img):
+    for (k, (p, img_saliency)) in enumerate(zip(P_subtree, P_img)):
         outfile = os.path.join(tempfile.gettempdir(), '%s.jpg' % uuid.uuid1().hex)
-        alpha_composite = _blend_saliency_map(img_probe_display, np.float32(img_saliency)/255.0, scale_factor=1.0/(p+1E-12)).save(outfile, 'JPEG', quality=95)
+        #alpha_composite = _blend_saliency_map(img_probe_display, np.float32(img_saliency)/255.0, scale_factor=1.0/(p+1E-12)).save(outfile, 'JPEG', quality=95)  # EBP scale factor for display
+        alpha_composite = _blend_saliency_map(img_probe_display, np.float32(img_saliency)/255.0, scale_factor=float(len(P_img)-k)/len(P_img)).save(outfile, 'JPEG', quality=95)    # linear scale factor for display
         imlist.append(vipy.image.ImageDetection(filename=outfile, xmin=0, ymin=0, width=112, height=112).rgb())
 
     f_montage = './test_whitebox_weighted_subtree_ebp_topk_%d_mask_%s.jpg' % (topk, mask)
-    img_montage = vipy.visualize.montage(imlist, imgheight=112, imgwidth=112, skip=False, border=1)
-    vipy.util.imwrite(img_montage, f_montage)
+    im_montage = vipy.visualize.montage(imlist, imgheight=112, imgwidth=112, skip=False, border=1)
+    vipy.util.imwrite(im_montage.numpy(), f_montage)
     print('[test_whitebox.weighted_subtree_triplet_ebp]: Saving montage (rowwise subtree, sorted by increasing gradient weight) to "%s"' % f_montage)
     print('[test_whitebox.weighted_subtree_triplet_ebp]: Final image in montage (bottom right) is weighted subtree saliency map')
 
