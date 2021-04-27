@@ -24,6 +24,13 @@ git lfs install
 git clone git@github.com:stresearch/xfr.git
 ```
 
+The XFR data is distributed in a set of tarballs, which must be unpacked:
+
+```python
+cd data/inpainting-game
+./unpack-aligned.sh 
+```
+
 We recommend installation in a python-3.6 virtual environment.
 
 ```python
