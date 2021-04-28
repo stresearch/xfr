@@ -145,7 +145,8 @@ def truncated_contrastive_triplet_ebp():
 
 def layerwise_ebp():
     """EBP alpha transparency montage starting from each interior layer and selected node specified by argmax excitation at this layer"""
-
+    raise('Deprecated')
+    
     wb = Whitebox(WhiteboxSTResnet(stresnet101('../models/resnet101v4_28NOV17_train.pth')), ebp_version=5, ebp_subtree_mode='all')
     im_probe = PIL.Image.open('../data/demo_face.jpg')
     img_display = np.array(im_probe.resize( (112,112) ))
@@ -187,8 +188,8 @@ def weighted_subtree_triplet_ebp(topk=1, mask='nose'):
     P_img.append(img_subtree)
     for (k, (p, img_saliency)) in enumerate(zip(P_subtree, P_img)):
         outfile = os.path.join(tempfile.gettempdir(), '%s.jpg' % uuid.uuid1().hex)
-        #alpha_composite = _blend_saliency_map(img_probe_display, np.float32(img_saliency)/255.0, scale_factor=1.0/(p+1E-12)).save(outfile, 'JPEG', quality=95)  # EBP scale factor for display
-        alpha_composite = _blend_saliency_map(img_probe_display, np.float32(img_saliency)/255.0, scale_factor=float(len(P_img)-k)/len(P_img)).save(outfile, 'JPEG', quality=95)    # linear scale factor for display
+        #alpha_composite = _blend_saliency_map(img_probe_display, np.float32(img_saliency)/255.0, scale_factor=1.0/(p+1E-12)).save(outfile, 'JPEG', quality=95)  # EBP scale factor for display 
+        alpha_composite = _blend_saliency_map(img_probe_display, np.float32(img_saliency)/255.0, scale_factor=1.0).save(outfile, 'JPEG', quality=95)    # uniform scale factor for display
         imlist.append(vipy.image.ImageDetection(filename=outfile, xmin=0, ymin=0, width=112, height=112).rgb())
 
     f_montage = './test_whitebox_weighted_subtree_ebp_topk_%d_mask_%s.jpg' % (topk, mask)
@@ -273,7 +274,6 @@ if __name__ == "__main__":
     weighted_subtree_triplet_ebp(topk=64, mask='nose')
     weighted_subtree_triplet_ebp(topk=64, mask='eyes')
     weighted_subtree_triplet_ebp(topk=64, mask='mouth')
-    layerwise_ebp()
 
     # Other whitebox face matchers
     ebp_resnet50_128()
