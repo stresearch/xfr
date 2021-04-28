@@ -15,7 +15,23 @@ In this paper, we provide the first comprehensive benchmark for explainable face
 
 
 # Installation
-Tested with Python 3.6, PyTorch 1.3.   We recommend installation in a python-3.6 virtual environment.
+Tested with Python 3.6, PyTorch 1.3.   
+
+This dataset is requires [git-lfs](https://git-lfs.github.com/).  To reproduce the results, you will need to [install git-lfs](https://git-lfs.github.com/) and then run `git lfs install` prior to cloning the repo to fetch necessary data.
+
+```python
+git lfs install
+git clone git@github.com:stresearch/xfr.git
+```
+
+The XFR data is distributed in a set of tarballs, which must be unpacked:
+
+```python
+cd data/inpainting-game
+./unpack-aligned.sh 
+```
+
+We recommend installation in a python-3.6 virtual environment.
 
 ```python
 pip3 install torch "scikit-image>=0.17.2" vipy==0.8.16 scipy numpy pillow torchvision pandas dill opencv-python jupyter easydict 
@@ -32,7 +48,6 @@ There are apparently cases where PyTorch will generate code for the wrong GPU, w
 to "CUDA error: no kernel image is available for execution on the device" errors in both
 the whitebox demo and some of the black box notebooks.
 
-Some of the binary files in this repository, such as the networks and the Inpainting Game dataset, is provided by [git-lfs](https://git-lfs.github.com/). To reproduce the results, you will need to [install git-lfs](https://git-lfs.github.com/) and then run `git lfs install` in your user account.
 
 # Whitebox Explainable Face Recognition 
 
